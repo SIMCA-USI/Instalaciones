@@ -1,0 +1,64 @@
+Ordenador 1:
+    sudo dpkg --get-selections > pkglist.txt
+
+Ordenador 2:
+    sudo dpkg --set-selections < pkglist.txt && sudo apt-get -u dselect-upgrade 
+    · Si esto falla o da muchos warnings, probar lo siguiente:
+    
+    sudo apt-cache dumpavail | sudo dpkg --merge-avail
+
+    · Si hay problemas de dependencias, ejecutar:
+    
+    sudo apt --fix-broken install
+
+    Repetir la ejecución del primer comando tras estos dos.
+
+Para instalar los últimos drivers para Intel HD Graphics:
+    sudo add-apt-repository ppa:oibaf/graphics-drivers
+
+    sudo apt-get install xserver-xorg-video-intel
+
+Para instalar los últimos drivers para AMD Radeon: 
+    · Descargar AMD Catalyst Graphics Driver for Linux, la última versión en 
+      este momento es la 15.9, descargar de: 
+      https://www.techspot.com/downloads/drivers/essentials/amd-catalyst-linux/
+    · Extraer AMD-Catalyst-15.9-Linux-installer-15.201.1151-x86.x86_64.run del 
+      zip descargado
+    · Ejecutar lo siguiente para dar permisos de ejecución:
+        chmod +x AMD-Catalyst-15.9-Linux-installer-15.201.1151-x86.x86_64.run
+    · Ejecutar:
+        ./amd-driver-installer-12-4-x86.x86_64.run
+
+Para instalar intelliJ IDEA, Pycharm o GitKraken, utilizar SNAP:
+    snap install intellij-idea-ultimate --classic
+    snap install pycharm-professional --classic
+    snap install gitkraken
+
+Como cliente SSH/SFTP, utilizar Electerm:
+    · Descargar el .deb más actualizado desde https://electerm.html5beta.com/
+    · Instalar mediante: sudo dpkg -i electerm-0.XX.XX-linux-amd64.deb
+
+Para instalar una versión de Wireshark compatible con plugins de ITS:
+    · Descargar de https://www.wireshark.org/download/src/all-versions/ 
+      la versión wireshark-2.0.0.tar.bz2 
+    · Descomprimir: tar xaf wireshark-2.0.0.tar.bz2
+    · cd wireshark-2.0.0/
+    · cmake ../wireshark-2.0.0
+    · make
+    · sudo make install
+    · Este proceso no debería dar problemas si se han instalado correctamente 
+      los paquetes y dependencias de los pasos del ordenador 2.
+    · Ejecutar Wireshark como wireshark-gtk. Se puede cambiar este comando para
+      que sea solo wireshark cambiando el nombre del archivo wireshark-gtk 
+      localizado en /usr/local/bin/ a wireshark.
+    · Si aparece al ejecutar el siguiente error: "wireshark: error while loading 
+      shared libraries: libwireshark.so.0: cannot open shared object file: 
+      No such file or directory", ejecutar el siguiente comando:
+
+      sudo ldconfig
+
+      Tras esto, ejecutar Wireshark con normalidad.
+    · Descargar los plugins de ITS de la siguiente URL:
+      http://oldforge.etsi.org/websvn/listing.php?repname=ITS.WIRESHARK_ITS_PLUGINS&path=%2Freleases%2Fwireshark-2.0.x%2FLinux%2F64bits%2F&#a968476731e53eba9f0db4af9e22ce5b0
+    · Descomprimir y pegar en la ruta /usr/local/lib/wireshark/plugins/2.0.0/
+
