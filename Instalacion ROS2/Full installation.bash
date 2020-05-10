@@ -19,7 +19,7 @@ sudo sh -c 'echo "deb http://packages.ros.org/ros2/ubuntu `lsb_release -cs` main
 sudo apt update
 sudo apt install ros-$CHOOSE_ROS_DISTRO-desktop ros-$CHOOSE_ROS_DISTRO-rqt-* python3-colcon-common-extensions -y
 # Una vez instalado eloquent se instala rosbag
-sudo apt install ros-$CHOOSE_ROS_DISTRO-ros2bag* ros-$CHOOSE_ROS_DISTRO-rosbag2*
+sudo apt install ros-$CHOOSE_ROS_DISTRO-ros2bag* ros-$CHOOSE_ROS_DISTRO-rosbag2-transport
 # Se añade eloquent al bash y se identifica el ordenador con un id
 source /opt/ros/$CHOOSE_ROS_DISTRO/setup.bash
 echo "source /opt/ros/$CHOOSE_ROS_DISTRO/setup.bash" >> ~/.bashrc
