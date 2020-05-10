@@ -8,7 +8,7 @@ echo ""
 export CHOOSE_ROS_DISTRO=eloquent
 # Se accede con sudo y se actualizan los repositorios
 echo $sudopass | sudo -S apt update
-sudo apt upgrade
+sudo apt upgrade -y
 # Se instalan librerías basicas que necesitaremos  mas adelante
 sudo apt install curl gnupg2 lsb-release python3-argcomplete git python3-pip python-rosdep libpython3-dev -y
 # Se inicializa y actualiza rosdep para dependencias de paquetes de ros
@@ -20,7 +20,7 @@ sudo sh -c 'echo "deb http://packages.ros.org/ros2/ubuntu `lsb_release -cs` main
 sudo apt update
 sudo apt install ros-$CHOOSE_ROS_DISTRO-desktop ros-$CHOOSE_ROS_DISTRO-rqt-* python3-colcon-common-extensions -y
 # Una vez instalado eloquent se instala rosbag
-sudo apt install ros-$CHOOSE_ROS_DISTRO-ros2bag* ros-$CHOOSE_ROS_DISTRO-rosbag2-transport
+sudo apt install ros-$CHOOSE_ROS_DISTRO-ros2bag* ros-$CHOOSE_ROS_DISTRO-rosbag2-transport -y
 # Se añade eloquent al bash y se identifica el ordenador con un id
 source /opt/ros/$CHOOSE_ROS_DISTRO/setup.bash
 echo "source /opt/ros/$CHOOSE_ROS_DISTRO/setup.bash" >> ~/.bashrc
