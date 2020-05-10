@@ -3,10 +3,9 @@
 read -s -p "Enter sudo password : " sudopass
 echo ""
 read -p "Enter your Github user : " user
-echo ""
 read -s -p "Enter your Github pass : " pass
 echo ""
-export $CHOOSE_ROS_DISTRO=eloquent
+export CHOOSE_ROS_DISTRO=eloquent
 # Se accede con sudo y se actualizan los repositorios
 echo $sudopass | sudo -S apt update
 # Se instalan librerías basicas que necesitaremos  mas adelante
@@ -20,10 +19,10 @@ sudo sh -c 'echo "deb http://packages.ros.org/ros2/ubuntu `lsb_release -cs` main
 sudo apt update
 sudo apt install ros-$CHOOSE_ROS_DISTRO-desktop ros-$CHOOSE_ROS_DISTRO-rqt-* python3-colcon-common-extensions -y
 # Una vez instalado eloquent se instala rosbag
-sudo apt install ros-$ROS_DISTRO-ros2bag* ros-$ROS_DISTRO-rosbag2*
+sudo apt install ros-$CHOOSE_ROS_DISTRO-ros2bag* ros-$CHOOSE_ROS_DISTRO-rosbag2*
 # Se añade eloquent al bash y se identifica el ordenador con un id
-source /opt/ros/$ROS_DISTRO/setup.bash
-echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
+source /opt/ros/$CHOOSE_ROS_DISTRO/setup.bash
+echo "source /opt/ros/$CHOOSE_ROS_DISTRO/setup.bash" >> ~/.bashrc
 echo "export ROS_DOMAIN_ID=2" >> ~/.bashrc
 # Se crea el workspace
 mkdir -p ~/ros2_ws/src
@@ -50,7 +49,7 @@ for D in *; do
 done
 # Se instalan las dependencias de paquetes de ros
 cd ~/ros2_ws
-sudo rosdep install -i --from-path src --rosdistro $ROS_DISTRO -y
+sudo rosdep install -i --from-path src --rosdistro $CHOOSE_ROS_DISTRO -y
 # Se complilan los paquetes
 colcon build --symlink-install
 # Se instalan los paquetes para poder ser utilizados
