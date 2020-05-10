@@ -8,6 +8,7 @@ echo ""
 export CHOOSE_ROS_DISTRO=eloquent
 # Se accede con sudo y se actualizan los repositorios
 echo $sudopass | sudo -S apt update
+sudo apt upgrade
 # Se instalan librerías basicas que necesitaremos  mas adelante
 sudo apt install curl gnupg2 lsb-release python3-argcomplete git python3-pip python-rosdep libpython3-dev -y
 # Se inicializa y actualiza rosdep para dependencias de paquetes de ros
