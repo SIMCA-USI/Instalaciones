@@ -59,5 +59,5 @@ colcon build --symlink-install
 . install/setup.bash
 source ~/ros2_ws/install/setup.bash
 echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc
-echo "alias build='cd $ROS_WS && colcon build --symlink-install && install/setup.bash ; cd -'"
-echo "alias dhcp='sudo dnsmasq -C /dev/null -kd -F 192.168.0.10,192.168.0.20 -i enp1s0 --bind-dynamic'"
+echo "alias build='cd $ROS_WS && colcon build --symlink-install && install/setup.bash ; cd -'" >> ~/.bashrc
+echo "alias dhcp='sudo dnsmasq -C /dev/null -kd -F 192.168.0.10,192.168.0.20 -i enp1s0 --bind-dynamic'" >> ~/.bashrc
