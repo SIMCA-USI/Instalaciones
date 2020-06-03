@@ -28,6 +28,7 @@ echo "export ROS_DOMAIN_ID=2" >> ~/.bashrc
 # Se crea el workspace
 mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
+echo "export ROS_WS=~/ros2_ws" >> ~/.bashrc
 # Se instalan algunos programas utiles
 sudo snap install gitkraken
 sudo snap install pycharm-community --classic
@@ -40,6 +41,7 @@ pip3 install bezier
 git clone https://$user:$pass@github.com/SIMCA-USI/ros2_waypoints.git && echo "Cloned"
 git clone https://$user:$pass@github.com/SIMCA-USI/ros2_gps.git && echo "Cloned"
 git clone https://$user:$pass@github.com/SIMCA-USI/ros_can.git && echo "Cloned"
+git clone https://$user:$pass@github.com/SIMCA-USI/ros2_keyboard.git && echo "Cloned"
 # Se recorren todos los directorios de la carpeta source y se instalan las dependencias de python
 for D in *; do
 	if [ -d "${D}" ]; then
@@ -57,3 +59,5 @@ colcon build --symlink-install
 . install/setup.bash
 source ~/ros2_ws/install/setup.bash
 echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc
+echo "alias build='cd $ROS_WS && colcon build --symlink-install && install/setup.bash ; cd -'"
+echo "alias dhcp='sudo dnsmasq -C /dev/null -kd -F 192.168.0.10,192.168.0.20 -i enp1s0 --bind-dynamic'"
