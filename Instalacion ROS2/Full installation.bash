@@ -35,8 +35,7 @@ sudo snap install pycharm-community --classic
 #dhcp 
 sudo snap install sublime-text --classic
 # Se instala la libreria bezier porque da problemas en la instalación como dependencia
-export BEZIER_NO_EXTENSION=true
-pip3 install bezier
+pip3 install bezier==2020.2.3
 # Se descargan los repositorios necesarios y se instalan las dependencias
 git clone https://$user:$pass@github.com/SIMCA-USI/ros2_waypoints.git && echo "Cloned"
 git clone https://$user:$pass@github.com/SIMCA-USI/ros2_gps.git && echo "Cloned"
